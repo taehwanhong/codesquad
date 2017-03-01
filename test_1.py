@@ -22,21 +22,34 @@
 # > toDec(“22”)
 # 10
 
+#10진법 숫자 int로 받기
+dec = int(input("input your Decimal number : "))
 
-
-import sys
-
-data = input("input your Decimal number")
-
-def change(a):
+#1240으로 변환
+def changeto1240(a):
     s = ''
-    while a>0:
+    while a > 0:
         a, r = divmod(a, 4)
-        if(r>9):
-            r=chr(ord('a')+r-10)
-        s=str(r)+s
+        s = str(r)+s
+    print("1240 world number is : "+ s.replace('3','4'))
+    return s
+
+changeto1240(dec)
+
+#1240 숫자 str로 받기s
+str1240 = input("input your 1240world number : ")
+#이번엔 4를 3으로 변환하고 자리수별로 쪼개서 list 로 변환
+int1240 = list(str1240.replace('4','3'))
+
+
+def changetodec(a):
+    s = 0
+    length = int(len(a))
+    # print(length)
+    while length > 0:
+        length = length -1
+        r = int(int1240[length-1])
+        s = s + r*(4**length)
     print(s)
 
-a = int(data)
-
-change(a)
+changetodec(int1240)
