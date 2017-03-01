@@ -58,7 +58,7 @@ tempdata = parsedata(map)
 # 리턴을 dict으로 바꿔봄
 mapdata = json.loads(tempdata)
 
-#
+
 # drawmap 함수 시작
 def drawmap(a):
     # height 만큼 돌면서, width너비로 \n 붙여줌
