@@ -45,7 +45,6 @@ int1240 = list(str1240.replace('4','3'))
 def changetodec(a):
     s = 0
     length = int(len(a))
-    # print(length)
     while length > 0:
         length = length -1
         r = int(int1240[length-1])
