@@ -24,3 +24,19 @@
 
 
 
+import sys
+
+data = input("input your Decimal number")
+
+def change(a):
+    s = ''
+    while a>0:
+        a, r = divmod(a, 4)
+        if(r>9):
+            r=chr(ord('a')+r-10)
+        s=str(r)+s
+    print(s)
+
+a = int(data)
+
+change(a)
