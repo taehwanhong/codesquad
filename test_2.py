@@ -30,4 +30,48 @@
 # +     o  +
 # ++++++++++
 
+import json
 
+# given data(string)
+map = "10,5\n++++++++++\n+-P------+\n+--------+\n+-----o--+\n++++++++++\n".replace("-", " ")
+
+
+def parsedata(a):
+    # splite by \n
+    splitmap = a.split('\n')
+    # set a width and height, data
+    width = int(splitmap[0].split(',')[0])
+    height = int(splitmap[0].split(',')[1])
+    data = "".join(splitmap[1:])
+    # dictionary 형태로 배치
+    dictobj = {'width':width, 'height':height, 'data':data}
+    # json으로 변환/출력
+    jsonobj = json.dumps(dictobj)
+    print(jsonobj)
+    # json으로 리턴
+    return jsonobj
+
+
+# map 받아서 parsedata 함수 실행
+tempdata = parsedata(map)
+
+# 리턴을 dict으로 바꿔봄
+mapdata = json.loads(tempdata)
+
+#
+# drawmap 함수 시작
+def drawmap(a):
+    # height 만큼 돌면서, width너비로 \n 붙여줌
+    number = 1
+    b = ''
+    for i in range(1, mapdata['height']+1):
+        # data에서 루프 번호에 해당하는 width끊고
+        a = mapdata['data'][mapdata['width'] * (number-1):mapdata['width'] * number]
+        # number 하나 올리기
+        number = number + 1
+        # 개행, 합치기
+        b = b + a +'\n'
+    print(b)
+
+# mapdata받아서 drawmap 함수 실행
+drawmap(mapdata)
