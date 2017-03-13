@@ -86,17 +86,16 @@ TIL 을 적는 사람도 있음.
 3.2 마크다운 문법 간단 소개
 마크다운은 John Gruber가 처음에 마크다운 언어를 만든 이후 거의 바뀌지 않았다. 그래서 사람들이 불편하게 생각하는 부분들을 보완한 여러가지 마크다운 언어가 만들어졌다. 대표적으로 가장 많이 쓰이는 것은 Markdown Extra와 Multimarkdown 그리고 Github Flavored Markdown 정도다. 여기선 그런 파생문법은 제외하고 가장 기본적인 마크다운 문법을 아주 간단하게만 소개해보려 한다.
 
-제목
-# 텍스트
-#을 하나 쓰면 HTML의 <h1> 태그를, #을 두개 쓰면 <h2>태그를 의미한다. 즉, #은 하나에서 여섯개까지 쓸 수 있고, #이 늘어날때마다 제목의 수준은 내려간다.(보통 글씨 크기가 작아진다.)
-번호 없는 리스트
--/+/* 텍스트
-번호 있는 리스트
-숫자. 리스트
-기울인 글씨 (html의 <em>태그)
-*텍스트* or _텍스트_
-굵은 글씨 (html의 <strong>태그)
-**텍스트** or __텍스트__
+
+# 을 하나 쓰면 HTML의 <h1> 태그를, #을 두개 쓰면 <h2>태그를 의미한다. 즉, #은 하나에서 여섯개까지 쓸 수 있고, #이 늘어날때마다 제목의 수준은 내려간다.(보통 글씨 크기가 작아진다.)
+##번호 없는 리스트
+ + -/+/* 텍스트
+##번호 있는 리스트
+ + 숫자. 리스트
+##기울인 글씨 (html의 <em>태그)
+ + *텍스트* or _텍스트_
+##굵은 글씨 (html의 <strong>태그)
+ + **텍스트** or __텍스트__
 인용
 > 텍스트
 인용문안에 인용문을 넣으려면 >를 더 추가해주면 된다.
@@ -118,16 +117,18 @@ TIL 을 적는 사람도 있음.
 ##git branch
 - git checkout ‐b dev_1.2
   *마스터에서 브랜치 dev_1.2를 만들어서 나감.
+\'
   /David-Mac-pro15:codesquad davidhong$ git checkout -b dev_1.2
 Switched to a new branch 'dev_1.2'/
+\'
 
 - git branch ‐a
-\
+\'
 David-Mac-pro15:codesquad davidhong$ git branch -a
 * dev_1.2
   master
   remotes/origin/master
-\
+\'
 
 
 - vi test.js
@@ -143,7 +144,7 @@ Fast-forward
 \
 
 - git tag 1.2
-* 버젼을 만드는것. tag를 달면 브랜치 작업 완료
-
+ * 버젼을 만드는것. tag를 달면 브랜치 작업 완료
+ * git push --tags 
 - git branch ‐d dev_1.2
 * 만드는것을
