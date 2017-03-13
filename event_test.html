@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>test html for querySelector</title>
+    <style>
+      .eventArea{
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="eventArea"></div>
+    <input type="text">
+    <script>
+      window.addEventListener("resize", function(){
+        console.log("browser size md");
+      })
+      var el = document.querySelector(".eventArea");
+      //이벤트 리스너는, 이벤트가 발생했을때 실행될 함수
+      //이벤트 핸들러라고 하기도함
+      el.addEventListener("mousedown", function() {
+        console.log("click blue");
+      })
+      var inputEl = document.querySelector("input");
+      inputEl.addEventListener("keydown", keyboardHandler);
+
+      function keyboardHandler(){
+        console.log("key!!!");
+      }
+
+      inputEl.onkeydown = function(){
+        console.log("key?!");
+      }
+    </script>
+  </body>
+</html>
