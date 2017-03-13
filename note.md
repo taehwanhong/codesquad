@@ -113,3 +113,37 @@ TIL 을 적는 사람도 있음.
 \`코드 내용\`
 코드 블럭
 앞에 스페이스 4개 이상 삽입
+
+----
+##git branch
+- git checkout ‐b dev_1.2
+  *마스터에서 브랜치 dev_1.2를 만들어서 나감.
+  /David-Mac-pro15:codesquad davidhong$ git checkout -b dev_1.2
+Switched to a new branch 'dev_1.2'/
+
+- git branch ‐a
+\
+David-Mac-pro15:codesquad davidhong$ git branch -a
+* dev_1.2
+  master
+  remotes/origin/master
+\
+
+
+- vi test.js
+- commit
+- git checkout master git merge dev_1.2
+\
+David-Mac-pro15:codesquad davidhong$ git merge dev_1.2
+Updating 5b492d1..20ff859
+Fast-forward
+ test.js | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 test.js
+\
+
+- git tag 1.2
+* 버젼을 만드는것. tag를 달면 브랜치 작업 완료
+
+- git branch ‐d dev_1.2
+* 만드는것을
