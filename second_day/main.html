@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>news</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+
+    <div class="wrap">
+    	<header>
+    		<ul>
+    			<li>전체언론사</li>
+    			<li>my뉴스</li>
+    		</ul>
+    		<div class="btn">
+    			<div class="left"><a href="#"><</a></div>
+    			<div class="right"><a href="#">></a></div>
+    		</div>
+    	</header>
+    	<section class="mainArea">
+    		<nav class="navigation">
+    			<ul>
+            <li>sbs</li>
+            <li>MBC</li>
+    			</ul>
+    		</nav>
+    		<section class="content">
+    		</section>
+    	</section>
+    </div>
+
+
+    <script>
+      //템플릿을 가져오는 parseinnerhtml만들어봄.
+      function parseInnerHtml(data) {
+        var a = '';
+        for(var i = 0; i < data[0].newslist.length; i++){
+          a = a +"<li>"+data[0].newslist[i]+"</li>";
+        }
+        var htmlTemplate = document.querySelector("#newsTemplate");
+        var innerHtml = htmlTemplate.innerHTML;
+        var title = innerHtml.replace("{{title}}", data[0].title)
+        .replace("{{imgurl}}", data[0].imgurl)
+        .replace("{{newsList}}", a );
+        var el = document.querySelector(".content");
+        el.innerHTML = title;
+      }
+      //
+      function appendList(data){
+        // console.log(data.length);
+        var a = '';
+        var titleList = '';
+        var baseElement = document.querySelector(".navigation > ul");
+        for (var i = 0; i < data.length; i++) {
+            titleList = data[i].title;
+            a = a + "<li id=" + i + ">" + titleList + "</li>";
+        }
+        baseElement.innerHTML = a;
+
+      }
+
+      // function selectSBS(){
+      //
+      // }
+      var oReq = new XMLHttpRequest();
+      oReq.addEventListener("load", function(){
+          var result = JSON.parse(oReq.responseText);
+          appendList(result);
+          parseInnerHtml(result);
+      });
+      oReq.open("GET", "data/newslist.json");
+      oReq.send();
+
+    </script>
+
+    <!-- templaet영역, -->
+	  <script type="template" id="newsTemplate">
+		  <h4 class="title">
+			   <span class="newsName">{{title}}</span> <button> <a href="#">X</a></button>
+		  </h4>
+		  <div class="newsList">
+			   <img src={{imgurl}} alt="">
+			   <ul>
+				    {{newsList}}
+			   </ul>
+		  </div>
+	  </script>
+    </body>
+</html>

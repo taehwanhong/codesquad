@@ -120,3 +120,17 @@ result
 ###AJAX통신.
 *구글에서 검색할때 using ajax mdn
 *실제 AJAX는 XMLHttpRequest를 사용하면 됌.
+
+
+###JSON
+- JS object notation
+- json format
+- 네트워크 타오고오는건 문자로 옴. 그래서 json parser로 변경해줘야함.
+
+
+###this @ JS
+- this가 그때그때 달라유
+- 어느상황에서 뭔지는 그때 그때 외울수는 없구....
+- 디버깅을 통해서 해결해야함.
+- this가 쓰이는 대표적인 상황을 알아야함.
+- 
