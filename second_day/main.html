@@ -23,8 +23,6 @@
     	<section class="mainArea">
     		<nav class="navigation">
     			<ul>
-            <li>sbs</li>
-            <li>MBC</li>
     			</ul>
     		</nav>
     		<section class="content">
@@ -36,29 +34,33 @@
     <script>
       //템플릿을 가져오는 parseinnerhtml만들어봄.
       function parseInnerHtml(data) {
-        var a = '';
-        for(var i = 0; i < data[0].newslist.length; i++){
-          a = a +"<li>"+data[0].newslist[i]+"</li>";
+        var text = '';
+        for(var i = 0; i < data.newslist.length; i++){
+          text = text +"<li>"+data.newslist[i]+"</li>";
         }
         var htmlTemplate = document.querySelector("#newsTemplate");
         var innerHtml = htmlTemplate.innerHTML;
-        var title = innerHtml.replace("{{title}}", data[0].title)
-        .replace("{{imgurl}}", data[0].imgurl)
-        .replace("{{newsList}}", a );
-        var el = document.querySelector(".content");
-        el.innerHTML = title;
+        var modifiedTemp = innerHtml.replace("{{title}}", data.title)
+        .replace("{{imgurl}}", data.imgurl)
+        .replace("{{newsList}}", text );
+        var contentNode = document.querySelector(".content");
+        contentNode.innerHTML = modifiedTemp;
       }
       //
+      function matchTitile(){
+
+      }
+
       function appendList(data){
         // console.log(data.length);
-        var a = '';
+        var content = '';
         var titleList = '';
         var baseElement = document.querySelector(".navigation > ul");
         for (var i = 0; i < data.length; i++) {
             titleList = data[i].title;
-            a = a + "<li id=" + i + ">" + titleList + "</li>";
+            content = content + "<li id=" + i + ">" + titleList + "</li>";
         }
-        baseElement.innerHTML = a;
+        baseElement.innerHTML = content;
 
       }
 
@@ -68,8 +70,17 @@
       var oReq = new XMLHttpRequest();
       oReq.addEventListener("load", function(){
           var result = JSON.parse(oReq.responseText);
+          var navigation = document.querySelector(".navigation");
           appendList(result);
-          parseInnerHtml(result);
+          parseInnerHtml(result[0]);
+
+          navigation.addEventListener("click",function(evt){
+            var node = evt.target;
+            if(!!node.id){
+              parseInnerHtml(result[node.id]);
+            }
+          })
+
       });
       oReq.open("GET", "data/newslist.json");
       oReq.send();
@@ -79,7 +90,7 @@
     <!-- templaet영역, -->
 	  <script type="template" id="newsTemplate">
 		  <h4 class="title">
-			   <span class="newsName">{{title}}</span> <button> <a href="#">X</a></button>
+			   <span class="newsName">{{title}}</span> <button class="button">X</button>
 		  </h4>
 		  <div class="newsList">
 			   <img src={{imgurl}} alt="">
