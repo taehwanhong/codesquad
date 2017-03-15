@@ -6,98 +6,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>news</title>
         <link rel="stylesheet" href="main.css">
+        <script src="main.js"> </script>
     </head>
+
     <body>
+      <div class="wrap">
+      	<header>
+      		<ul>
+      			<li>전체언론사</li>
+      			<li>my뉴스</li>
+      		</ul>
+      		<div class="btn">
+      			<div class="left"><a href="#"> < </a></div>
+      			<div class="right"><a href="#"> > </a></div>
+      		</div>
+      	</header>
+      	<section class="mainArea">
+      		<nav class="navigation">
+				<ul></ul>
+			</nav>
+      		<section class="content"></section>
+      	</section>
+      </div>
+      <!-- template 영역 -->
+  	  <script type="template" id="viewContents">
+  		  <h4 class="title">
+  			   <span class="newsName">{{title}}</span> <button class="button">X</button>
+  		  </h4>
+  		  <div class="newsList">
+  			   <img src={{imgurl}} alt="">
+  			   <ul>
+  				    {{newsList}}
+  			   </ul>
+  		  </div>
+  	  </script>
 
-    <div class="wrap">
-    	<header>
-    		<ul>
-    			<li>전체언론사</li>
-    			<li>my뉴스</li>
-    		</ul>
-    		<div class="btn">
-    			<div class="left"><a href="#"><</a></div>
-    			<div class="right"><a href="#">></a></div>
-    		</div>
-    	</header>
-    	<section class="mainArea">
-    		<nav class="navigation">
-    			<ul>
-    			</ul>
-    		</nav>
-    		<section class="content">
-    		</section>
-    	</section>
-    </div>
-
-
-    <script>
-      //템플릿을 가져오는 parseinnerhtml만들어봄.
-      function parseInnerHtml(data) {
-        var text = '';
-        for(var i = 0; i < data.newslist.length; i++){
-          text = text +"<li>"+data.newslist[i]+"</li>";
-        }
-        var htmlTemplate = document.querySelector("#newsTemplate");
-        var innerHtml = htmlTemplate.innerHTML;
-        var modifiedTemp = innerHtml.replace("{{title}}", data.title)
-        .replace("{{imgurl}}", data.imgurl)
-        .replace("{{newsList}}", text );
-        var contentNode = document.querySelector(".content");
-        contentNode.innerHTML = modifiedTemp;
-      }
-      //
-      function matchTitile(){
-
-      }
-
-      function appendList(data){
-        // console.log(data.length);
-        var content = '';
-        var titleList = '';
-        var baseElement = document.querySelector(".navigation > ul");
-        for (var i = 0; i < data.length; i++) {
-            titleList = data[i].title;
-            content = content + "<li id=" + i + ">" + titleList + "</li>";
-        }
-        baseElement.innerHTML = content;
-
-      }
-
-      // function selectSBS(){
-      //
-      // }
-      var oReq = new XMLHttpRequest();
-      oReq.addEventListener("load", function(){
-          var result = JSON.parse(oReq.responseText);
-          var navigation = document.querySelector(".navigation");
-          appendList(result);
-          parseInnerHtml(result[0]);
-
-          navigation.addEventListener("click",function(evt){
-            var node = evt.target;
-            if(!!node.id){
-              parseInnerHtml(result[node.id]);
-            }
-          })
-
-      });
-      oReq.open("GET", "data/newslist.json");
-      oReq.send();
-
-    </script>
-
-    <!-- templaet영역, -->
-	  <script type="template" id="newsTemplate">
-		  <h4 class="title">
-			   <span class="newsName">{{title}}</span> <button class="button">X</button>
-		  </h4>
-		  <div class="newsList">
-			   <img src={{imgurl}} alt="">
-			   <ul>
-				    {{newsList}}
-			   </ul>
-		  </div>
-	  </script>
     </body>
 </html>
