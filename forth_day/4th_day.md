@@ -19,4 +19,14 @@
  -------
  
  #4일차 내용.
+ - 객체를 만들어서 뉴스 뷰 다시 만들기
+ - object create
+ - 인스턴스
+ - 쿼리 셀렉터
+ - ajax
+ - 오브젝트 리터럴
+ - data => model
+ - unit = { key : value }
+ - unit.ajax
+ - controller
  - 
