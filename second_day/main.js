@@ -4,7 +4,9 @@ var oReq = new XMLHttpRequest();
 oReq.addEventListener("load", function(){
     var result = JSON.parse(oReq.responseText);
     var navigation = document.querySelector(".navigation");
+    //func-appendList 에 JSON으로 실행
     appendList(result);
+    //func-parseInnerHtml에 JSON의 0번째 배열로 실행
     parseInnerHtml(result[0]);
 
     navigation.addEventListener("click",function(evt){
