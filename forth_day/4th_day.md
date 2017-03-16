@@ -1,6 +1,5 @@
-/**
- * Created by davidhong on 16/03/2017.
- */
+Author : Created by davidhong on 16/03/2017.
+
 
 
 # 주말에 공부하면서 정리할것
@@ -29,4 +28,6 @@
  - unit = { key : value }
  - unit.ajax
  - controller
- - 
+ - method
+ 
+ 
