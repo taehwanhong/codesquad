@@ -1,77 +1,81 @@
-/**
- * Created by davidhong on 16/03/2017.
- */
-// Adopt a MVC structure to original js code.
+/* Created by davidhong on 16/03/2017. */
+// Main
+
+
+}
+
+main();
 
 // Model
-/* Model has a JSON data
- * JSON data는 Controller에서 가져올 것임. 이것을 여기서는, calledData() 객체에 담아 놓겠음
- *
- */
-// View
+
+    function NewsModel(title, imgurl, newslist, NewsTemplate) {
+        this._title = title;
+        this._imgurl = imgurl;
+        this._newslist = newslist;
+        this._showingNews = NewsTemplate;
+    }
+
+    NewsModel.prototype = {
+        getList: function () {
+            Console.log("aaa");
+        },
+        addList: function () {
+            Console.log("addlist");
+        },
+        removeList: function () {
+            Console.log("rmlist");
+        },
+        getSelectedList: function () {
+            Console.log("selectedlist");
+        }
+
+    };
 
 // Controller
-/* 1. JSON title만 모아서 pressList 만들어줌
- *    1.1
- * function 2.
- *
- */
-// Event
-// At this project, I will consider about Event handler. (specially)
 
-
-// Controller Section
-// 1. JSON 호출
-// input data : data/newslist.json
-// output data :
-
-
-
-
-//data.json가져온거 Object로 NewsModel()에 넣기
-//INPUT : data/newslist.json
-//OUTPUT :
-function NewsModel(title, imgurl, newslist) {
-    this._title = title;
-    this._imgurl = imgurl;
-    this._newslist = newslist;
-}
-
-NewsModel.prototype = {
-    pressList : function(){
-        
-    }
-};
-
-function NewsListController() {
-    this._newsModelList = [];//요 배열에 뉴스 입력.
-}
-
-NewsListController.prototype = {
-
-    initData : function () {
-        var oReq = new XMLHttpRequest();
-        var that = this; // this, that은 NewsListController 자신
-        oReq.open("GET", "data/newslist.json"); //newslist.json 열기
-        oReq.send(); //send.(TBK)
-        oReq.addEventListener("load", function () {
-            var result = JSON.parse(oReq.responseText);
-            for(i=0; i<result.length; i++) {
-                // this 는 NewsListController가 아니라 XMLHttpRequest 일 것
-                console.log(this);
-                //console.log(that);
-                that._newsModelList.push(new NewsModel(result[i].title, result[i].imgurl, result[i].newslist));
-            }
-        });
-    },
-
-    initView: function () {
-        var
-
+    function NewsListController() {
+        this._newsModelList = [];//요 배열에 뉴스 입력.
     }
 
-};
+    NewsListController.prototype = {
+        //init data 불러오기, NewsListController의 _newsModelList에 때려넣기
+        initData: function () {
+            var oReq = new XMLHttpRequest();
+            var that = this; // this, that은 NewsListController 자신
+            oReq.open("GET", "data/newslist.json"); //newslist.json 열기
+            oReq.send(); //send.(TBK)
+            oReq.addEventListener("load", function () {
+                var result = JSON.parse(oReq.responseText);
+                for (i = 0; i < result.length; i++) {
+                    // this 는 NewsListController가 아니라 XMLHttpRequest 일 것
+                    //console.log(this);
+                    //console.log(that);
+                    that._newsModelList.push(new NewsModel(result[i].title, result[i].imgurl, result[i].newslist));
+                }
+            });
+        },
+        createView: function () {
 
-n = new NewsListController();
-n.initData();
-n.initView();
+            var queryHtmlTemplate = document.querySelector("#viewContents");
+            debugger;
+            console.log(queryHtmlTemplate);
+            var htmlTemplate = queryHtmlTemplate.innerHTML;
+            var adoptTemplate = htmlTemplate.replace("{{title}}", n._newsModelList[1]._title)
+                .replace("{{imgurl}}", n._newsModelList[1]._imgurl)
+                .replace("{{newsList}}", n._newsModelList[1]._newslist);
+            var m = new NewsModel(n._newsModelList[1]._title, n._newsModelList[1]._imgurl, n._newsModelList[1]._newslist, adoptTemplate);
+            console.log(m);
+        }
+    };
+
+function NewsListView() {
+    this._newsViewList = [];
+}
+
+NewsListView.prototype = {
+    adoptHtml: function () {
+        var baseElement = document.querySelector(".content");
+        console.log(baseElement);
+        baseElement.innerHTML = n.createView();
+    }
+};
