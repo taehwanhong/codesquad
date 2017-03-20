@@ -1,0 +1,74 @@
+[
+	{
+		"title" : "sbs",
+		"imgurl" : "http://static.naver.net/newsstand/2017/0313/article_img/9054/173200/001.jpg",
+		"newslist" : [
+				"[가보니] 가상 경주도 즐기고, 내 손으로 자동차도 만들고",
+				"리캡차'가 사라진다",
+				"갤럭시S8' 출시? '갤노트7' 처리 계획부터 밝혀야",
+				"블로코-삼성SDS, 블록체인 사업 '맞손",
+				"[블록체인 톺아보기] 퍼블릭 블록체인의 한계와 프라이빗 블록체인"
+		]
+	},
+	{
+		"title" : "mbc",
+		"imgurl" : "http://static.naver.net/newsstand/2017/0313/article_img/9054/173200/001.jpg",
+		"newslist" : [
+				"2Lorem ipsum dolor sit amet, consectetur adipisicin",
+				"2ipsum dolor sit amet, consectetur adipisicin",
+				"2dolor sit amet, consectetur adipisicin",
+				"2amet, consectetur adipisicin"
+		]
+	},
+  {
+    "title" : "333",
+    "imgurl" : "http://static.naver.net/newsstand/2017/0313/article_img/9054/173200/001.jpg",
+    "newslist" : [
+        "3Lorem ipsum dolor sit amet, consectetur adipisicin",
+        "3ipsum dolor sit amet, consectetur adipisicin",
+        "3dolor sit amet, consectetur adipisicin",
+        "3amet, consectetur adipisicin"
+    ]
+  },
+  {
+    "title" : "444",
+    "imgurl" : "http://static.naver.net/newsstand/2017/0313/article_img/9054/173200/001.jpg",
+    "newslist" : [
+        "4Lorem ipsum dolor sit amet, consectetur adipisicin",
+        "4ipsum dolor sit amet, consectetur adipisicin",
+        "4dolor sit amet, consectetur adipisicin",
+        "4amet, consectetur adipisicin"
+    ]
+  },
+	{
+		"title" : "555",
+		"imgurl" : "http://static.naver.net/newsstand/2017/0313/article_img/9054/173200/001.jpg",
+		"newslist" : [
+			"54Lorem ipsum dolor sit amet, consectetur adipisicin",
+			"54ipsum dolor sit amet, consectetur adipisicin",
+			"54dolor sit amet, consectetur adipisicin",
+			"54amet, consectetur adipisicin"
+		]
+	},
+	{
+		"title" : "666",
+		"imgurl" : "http://static.naver.net/newsstand/2017/0313/article_img/9054/173200/001.jpg",
+		"newslist" : [
+			"64Lorem ipsum dolor sit amet, consectetur adipisicin",
+			"64ipsum dolor sit amet, consectetur adipisicin",
+			"64dolor sit amet, consectetur adipisicin",
+			"64amet, consectetur adipisicin"
+		]
+	},
+	{
+		"title" : "777",
+		"imgurl" : "http://static.naver.net/newsstand/2017/0313/article_img/9054/173200/001.jpg",
+		"newslist" : [
+			"74Lorem ipsum dolor sit amet, consectetur adipisicin",
+			"74ipsum dolor sit amet, consectetur adipisicin",
+			"74dolor sit amet, consectetur adipisicin",
+			"74amet, consectetur adipisicin"
+		]
+	}
+
+]
