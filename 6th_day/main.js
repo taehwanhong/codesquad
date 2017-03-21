@@ -124,7 +124,7 @@ ns.view.list = {
     },
     selectList : function () {
         ns.util.$(".mainArea ul").addEventListener("click", function(evt{
-            
+
         }))
     }
 
